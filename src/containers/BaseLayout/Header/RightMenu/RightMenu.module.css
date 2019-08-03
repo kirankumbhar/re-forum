@@ -1,0 +1,15 @@
+.RightMenu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: auto;
+}
+
+.BellIcon {
+    font-size: 24px;
+    padding: 1em;
+}
+
+.Avatar {
+    background-color: #00897B;
+}

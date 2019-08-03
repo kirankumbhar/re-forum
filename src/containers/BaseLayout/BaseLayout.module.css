@@ -1,0 +1,31 @@
+.Layout {
+    background-color: #fff;
+}
+
+.Header {
+    background-color: transparent;
+    box-shadow: 0 6px 10px #f0f1f2;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+h1 {
+    color: teal;
+    margin: 0;
+    display: inline-block;
+}
+
+.Title {
+    display: inline-block;
+}
+
+.Content {
+    flex: 1;
+    padding: 1em;
+}
+
+.Footer {
+    text-align: center;
+}

@@ -1,0 +1,17 @@
+.Main {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.List {
+    width: 20%;
+}
+
+.Post {
+    width: 80%;
+}
+
+.ListItem:hover {
+    color: teal;
+    cursor: pointer;
+}
