@@ -1,17 +1,22 @@
 .Main {
-    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
     margin: 0 auto;
 
 }
-.List {
+.Categories {
     width: 20%;
+    height: fit-content;
+    margin-right: 5em;
 }
 
-.Post {
+.Posts {
     width: 80%;
 }
 
 .ListItem:hover {
-    color: teal;
+    background-color: #b2dfdb;
+    color: #004d40;
     cursor: pointer;
 }
