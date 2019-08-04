@@ -19,6 +19,7 @@ h1 {
 
 .Title {
     display: inline-block;
+    cursor: pointer;
 }
 
 .Content {
