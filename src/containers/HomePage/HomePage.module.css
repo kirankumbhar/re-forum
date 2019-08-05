@@ -7,7 +7,7 @@
 }
 .Categories {
     width: 20%;
-    height: fit-content;
+    display: table;
     margin-right: 5em;
 }
 
@@ -19,4 +19,5 @@
     background-color: #b2dfdb;
     color: #004d40;
     cursor: pointer;
+    border-right: 2px solid #00897B;
 }
