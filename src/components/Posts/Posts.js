@@ -21,6 +21,7 @@ const posts = (props) => {
                     title={item.title}
                     description={item.description}
                     author={item.author}
+                    publishedDate={item.publishedDate}
                 />
             )}
         />

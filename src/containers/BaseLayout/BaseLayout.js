@@ -15,7 +15,7 @@ render() {
             <h1>Re-Forum</h1>
         </div>
         <NavBar/>
-        <RightMenu username="kk"/>
+        <RightMenu username="KK"/>
      </Header>
      <Content className={classes.Content}>
          {this.props.children}

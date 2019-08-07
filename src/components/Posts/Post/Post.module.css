@@ -1,3 +1,11 @@
 .Post h3 {
     cursor: pointer;
 }
+.ListItemMeta h4 {
+    margin: 4px 0 0 0;
+    font-weight: 400;
+}
+
+.Post li:last-child {
+ float: right;
+}

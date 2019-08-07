@@ -20,13 +20,17 @@ class HomePage extends Component {
             'Others'
         ];
         const postData = []
+        const date = new Date();
         for (let i = 0; i < 37; i++) {
             postData.push({
                 id: i,
                 author: 'John doe',
                 title: "Title of the topic " + (i + 1),
                 description: "Re-forum is the discussion forum" +
-                    "based on reactjs and redux Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    " based on reactjs and redux Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " +
+                    "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris " +
+                    "nisi ut aliquip ex ea commodo consequat.",
+                publishedDate: date.toLocaleString()
             });
         }
         return (
