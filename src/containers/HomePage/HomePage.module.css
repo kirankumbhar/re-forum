@@ -13,6 +13,14 @@
 
 .Posts {
     width: 80%;
+    position: relative;
+}
+
+.LoadingIcon {
+    position: absolute;
+    font-size: 60px;
+    top: 50%;
+    left: 40%;
 }
 
 .ListItem:hover {

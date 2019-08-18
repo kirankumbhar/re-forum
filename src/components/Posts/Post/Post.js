@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Icon, Avatar } from 'antd';
+import { Link } from 'react-router-dom';
 
 import styles from './Post.module.css';
 
@@ -12,6 +13,7 @@ const IconText = ({ type, text }) => (
 );
 
 const post = (props) => {
+    
     return (
         <List.Item
             className={styles.Post}
@@ -22,7 +24,9 @@ const post = (props) => {
                 <IconText type="clock-circle" text={props.publishedDate} />
             ]}
         >
-            <h3>{props.title}</h3>
+            <h3>
+            <Link to={'post/' + props.id}>{props.title}</Link>
+            </h3>
             <List.Item.Meta
             className={styles.ListItemMeta}
                 avatar={

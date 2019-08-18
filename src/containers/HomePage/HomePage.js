@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
-import { List } from 'antd';
+import { List, Icon } from 'antd';
 
 import Posts from '../../components/Posts/Posts';
 import styles from './HomePage.module.css';
+import axios from '../../axios';
 
 class HomePage extends Component {
-    onClickhandler() {
-        console.log('Clicked');
+    state = {
+        selectedCategory: null,
+        posts: null,
+    }
 
+    componentDidMount () {
+        let postData = [];
+        axios.get('/posts.json').then(response => {
+            for (const key in response.data) {
+                postData.push({
+                    id: key,
+                    title: response.data[key].title,
+                    author: response.data[key].author,
+                    description: response.data[key].description
+                    
+                });
+            }
+            this.setState({...this.state, posts: postData})
+            
+        }).catch(error => {
+            console.log(error);
+        })
     }
     render() {
-        //dummy data 
+        //dummy categories 
         const categories = [
+            'Tech',
             'Sports',
-            'Science',
-            'Technology',
-            'Games',
-            'Movies',
+            'Finance',
+            'Entertainment',
             'Others'
         ];
-        const postData = []
-        const date = new Date();
-        for (let i = 0; i < 37; i++) {
-            postData.push({
-                id: i,
-                author: 'John doe',
-                title: "Title of the topic " + (i + 1),
-                description: "Re-forum is the discussion forum" +
-                    " based on reactjs and redux Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " +
-                    "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris " +
-                    "nisi ut aliquip ex ea commodo consequat.",
-                publishedDate: date.toLocaleString()
-            });
-        }
         return (
             <section className={styles.Main}>
                 <List className={styles.Categories}
@@ -40,13 +45,13 @@ class HomePage extends Component {
                     bordered
                     dataSource={categories}
                     renderItem={item => (
-                        <List.Item className={styles.ListItem} onClick={this.onClickhandler}>
+                        <List.Item className={styles.ListItem}>
                             {item}
                         </List.Item>
                     )}
                 />
                 <div className={styles.Posts}>
-                    <Posts postData={postData} />
+                    {this.state.posts == null ? <Icon type="loading" className={styles.LoadingIcon}/> : <Posts postData={this.state.posts} />}
                 </div>
             </section>
         );
