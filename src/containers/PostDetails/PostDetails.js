@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Icon, Skeleton, Card, Avatar } from 'antd';
 
 import axios from '../../axios';
+import { getUsernameInitials } from '../../utils';
 
 const { Meta } = Card;
 
@@ -30,36 +31,37 @@ class PostDetails extends Component {
         });
         
     }
- render() {
-     let post = (
-         <Card
-         style={{ width: 600, marginTop: 16 }}
-         actions={[
-             <Icon type="setting" key="setting" />,
-             <Icon type="edit" key="edit" />
-            ]}
-            >
-        <Skeleton loading={this.state.loading} avatar active>
-            <h2>{this.state.loading === false ? this.state.postData.title : null}</h2>
-          <Meta
-            avatar={
-                <Avatar>JD</Avatar>
-            }
-            title={this.state.loading === false ? this.state.postData.author : null}
-            />
-          <p>{this.state.loading === false ? this.state.postData.description : null}</p>
-        </Skeleton>
-      </Card>
-     )
-     if (this.state.postData) {
+    render() {
+        getUsernameInitials('Kiran');
+        getUsernameInitials('Kiran Kumbhar');
+        getUsernameInitials('Kiran P Kumbhar');
+        let post = null;
+        if (this.state.postData) {
+            post = (
+            <Fragment><h2>{this.state.postData.title}</h2>
+                <Meta
+                    avatar={
+                        <Avatar>{getUsernameInitials(this.state.postData.author)}</Avatar>
+                    }
+                    title={this.state.postData.author}
+                    />
+                <p>{this.state.postData.description}</p>
+                </Fragment>
+            )
         }
         if (this.state.error) {
             post = <p> There was some problem loading Topic. Please try again later! </p>
-     }
-     return (<section>
-         {post}
-     </section>)
- }
+        }
+        return (
+            <section>
+                <Card style={{ width: 800, marginTop: 16, margin: '0 auto' }}>
+                    <Skeleton loading={this.state.loading} avatar active>
+                        {post}
+                    </Skeleton>
+                </Card>
+            </section>
+        )
+    }
 }
 
 export default PostDetails;
