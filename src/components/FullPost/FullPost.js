@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Icon, Skeleton, Card, Avatar } from 'antd';
 
+import { getUsernameInitials } from '../../utils';
+import ActionItems from '../ActionItems/ActionItems';
+
+const { Meta } = Card;
 const fullPost = (props) => {
-    return  (
-        <h2>
-           {this.props.title} 
-        </h2>
+    let post = null;
+    if (props.postData) {
+        post = (
+            <Fragment>
+                <h2>{props.postData.title}</h2>
+                <Meta
+                    avatar={
+                        <Avatar>{getUsernameInitials(props.postData.author)}</Avatar>
+                    }
+                    title={props.postData.author}
+                />
+                <p>{props.postData.description}</p>
+            </Fragment>
+        );
+    }
+    return (
+        <Fragment>
+            <Card style={{ marginTop: 16 }}>
+                <Skeleton loading={props.loading} avatar>
+                    {post}
+                </Skeleton>
+                <ActionItems/>
+            </Card>
+        </Fragment>
     );
 }
 
