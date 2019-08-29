@@ -1,12 +1,26 @@
-import React, { Component, Fragment } from 'react';
-import { Icon, Skeleton, Card, Avatar } from 'antd';
+import React, { Component } from 'react';
+import { Icon, Comment, Card, Avatar, Form, Input, Button } from 'antd';
 
 import axios from '../../axios';
 import { getUsernameInitials } from '../../utils';
 import FullPost from '../../components/FullPost/FullPost';
 import Comments from '../../components/Comments/Comments';
 import styles from './PostDetails.module.css';
-const { Meta } = Card;
+
+const { TextArea } = Input;
+
+const CommentForm = (props) => (
+    <div>
+        <Form.Item>
+            <TextArea rows={4} onChange={props.onChange} value={props.value} />
+        </Form.Item>
+        <Form.Item>
+            <Button htmlType="submit" loading={props.loading} onClick={props.onClick} type="primary">
+                Add Comment
+            </Button>
+        </Form.Item>
+    </div>
+);
 
 class PostDetails extends Component {
     state = {
@@ -43,7 +57,17 @@ class PostDetails extends Component {
         return (
             <section className={styles.PostDetails}>
                 {post}
-                <Card>
+                <Card className={styles.CommentsCard}>
+                <section className={styles.AddComment}>
+                    <Comment
+                        avatar = {
+                            <Avatar>JD</Avatar>
+                        }
+                        content = {
+                            <CommentForm/>
+                        }
+                    />
+                </section>
                 <Comments/>
                 </Card>
             </section>
