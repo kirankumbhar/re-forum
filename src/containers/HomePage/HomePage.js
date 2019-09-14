@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { List, Icon } from 'antd';
+import { connect } from 'react-redux';
 
 import Posts from '../../components/Posts/Posts';
 import styles from './HomePage.module.css';
 import axios from '../../axios';
-
+import * as actions from '../../store/actions/index';
 class HomePage extends Component {
     state = {
         selectedCategory: null,
@@ -12,22 +13,7 @@ class HomePage extends Component {
     }
 
     componentDidMount () {
-        let postData = [];
-        axios.get('/posts.json').then(response => {
-            for (const key in response.data) {
-                postData.push({
-                    id: key,
-                    title: response.data[key].title,
-                    author: response.data[key].author,
-                    description: response.data[key].description
-                    
-                });
-            }
-            this.setState({...this.state, posts: postData})
-            
-        }).catch(error => {
-            console.log(error);
-        })
+        this.props.onInitPosts();
     }
     render() {
         //dummy categories 
@@ -38,6 +24,8 @@ class HomePage extends Component {
             'Entertainment',
             'Others'
         ];
+        console.log(this.props.posts);
+        
         return (
             <section className={styles.Main}>
                 <List className={styles.Categories}
@@ -51,11 +39,24 @@ class HomePage extends Component {
                     )}
                 />
                 <div className={styles.Posts}>
-                    {this.state.posts == null ? <Icon type="loading" className={styles.LoadingIcon}/> : <Posts postData={this.state.posts} />}
+                    {this.props.posts == null ? <Icon type="loading" className={styles.LoadingIcon}/> : <Posts postData={this.props.posts} />}
                 </div>
             </section>
         );
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts.posts
+    }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      onInitPosts: () => dispatch(actions.initPosts())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

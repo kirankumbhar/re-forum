@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Icon, Comment, Card, Avatar, Form, Input, Button } from 'antd';
+import { Card } from 'antd';
 
 import axios from '../../axios';
-import { getUsernameInitials } from '../../utils';
+// import { getUsernameInitials } from '../../utils';
 import FullPost from '../../components/FullPost/FullPost';
 import Comments from '../../components/Comments/Comments';
 import CommentForm from '../../components/Comments/CommentForm/CommentForm';
@@ -12,7 +12,8 @@ class PostDetails extends Component {
     state = {
         loading: true,
         postData: null,
-        error: false
+        error: false,
+        commentReplyId: null,
     }
 
     componentDidMount() {
@@ -32,6 +33,15 @@ class PostDetails extends Component {
         });
 
     }
+
+    commentReplyHandler = (event) => {
+        console.log(event.target.id);
+        this.setState({
+            ...this.state,
+            commentReplyId: event.target.id
+        });
+    }
+
     render() {
         let post = <FullPost postData={this.state.postData} loading={this.state.loading} />;
         if (this.state.error) {
@@ -44,7 +54,7 @@ class PostDetails extends Component {
                 <section className={styles.AddComment}>
                     <CommentForm />
                 </section>
-                <Comments/>
+                <Comments commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
                 </Card>
             </section>
         )

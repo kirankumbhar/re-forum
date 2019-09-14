@@ -1,6 +1,8 @@
 import React from 'react';
 import { Comment, Avatar, Tooltip, Icon } from 'antd';
 
+import CommentForm from './CommentForm/CommentForm';
+
 //dummy comment data
 let comments = [];
 for (let i = 0; i < 6; i++) {
@@ -14,11 +16,15 @@ for (let i = 0; i < 6; i++) {
 }
 
 const Comments = (props) => {
-  return comments.map((comment) => { 
+  console.log(props);
+  
+  return comments.map((comment) => {
+    console.log(comment.id);
+    
     return (
         <Comment
           actions={[
-            <span key="comment-basic-like">
+            <span key={"comment-basic-like "+ comment.id}>
               <Tooltip title="Like">
                 <Icon
                   type="like"
@@ -28,7 +34,7 @@ const Comments = (props) => {
               </Tooltip>
               <span style={{ paddingLeft: 8, cursor: 'auto' }}>{comment.likes}</span>
             </span>,
-            <span key="comment-nested-reply-to">Reply to</span>
+            <span onClick={(event) => props.commentReplyHandler(event)} id={comment.id} key={"comment-nested-reply-to" + comment.id}>Reply to</span>
           ]}
           author={<a>{comment.author}</a>}
           avatar={
@@ -40,6 +46,7 @@ const Comments = (props) => {
             </p>
           }
         >
+          {props.commentReplyId === comment.id.toString() ? <CommentForm/> : null}
         </Comment>
     );
   });
