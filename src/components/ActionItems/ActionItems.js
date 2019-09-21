@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { Card, Icon } from 'antd';
+import React from 'react';
+import { Icon } from 'antd';
 
 import styles from './ActionItems.module.css';
 
-const IconText = ({type, value, inlineStyle}) => (
+const IconText = ({type, value, theme, inlineStyle, iconStyle, onClick}) => (
     <span className={styles.ActionItem} style={inlineStyle}>
-        <Icon type={type} className={styles.Icon} />
+        <Icon type={type} theme={theme} className={styles.Icon} style={iconStyle} onClick={onClick} />
         {value}
     </span>
 );
@@ -13,7 +13,7 @@ const IconText = ({type, value, inlineStyle}) => (
 const actionItems = (props) => {
     return (
         <div className={styles.ActionItems}>
-            <IconText type="like" value="19" />
+            {props.liked ? <IconText onClick={props.postLikeHandler} theme="filled" type="like" value="19" /> : <IconText onClick={props.postLikeHandler} type="like" iconStyle={{ cursor:'pointer' }} value="19" />}
             <IconText type="star" inlineStyle={{ float: 'right' }}/>
             <IconText type="message" value="6" />
             <IconText type="eye" value="123" />

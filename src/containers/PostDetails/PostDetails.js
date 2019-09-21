@@ -14,6 +14,7 @@ class PostDetails extends Component {
         postData: null,
         error: false,
         commentReplyId: null,
+        liked: false,
     }
 
     componentDidMount() {
@@ -35,15 +36,21 @@ class PostDetails extends Component {
     }
 
     commentReplyHandler = (event) => {
-        console.log(event.target.id);
         this.setState({
             ...this.state,
             commentReplyId: event.target.id
         });
     }
 
+    postLikeHandler = () => {
+        this.setState({
+            ...this.state,
+            liked: !this.state.liked
+        });
+    }
+
     render() {
-        let post = <FullPost postData={this.state.postData} loading={this.state.loading} />;
+        let post = <FullPost liked={this.state.liked} postData={this.state.postData} postLikeHandler={this.postLikeHandler} loading={this.state.loading} />;
         if (this.state.error) {
             post = <p> There was some problem loading Topic. Please try again later! </p>
         }

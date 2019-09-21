@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Icon, Skeleton, Card, Avatar } from 'antd';
+import { Skeleton, Card, Avatar } from 'antd';
 
 import { getUsernameInitials } from '../../utils';
 import ActionItems from '../ActionItems/ActionItems';
@@ -27,7 +27,7 @@ const fullPost = (props) => {
                 <Skeleton loading={props.loading} avatar>
                     {post}
                 </Skeleton>
-                <ActionItems/>
+                <ActionItems liked={props.liked} postLikeHandler={props.postLikeHandler} />
             </Card>
         </Fragment>
     );
