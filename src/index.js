@@ -13,12 +13,14 @@ import {
 import './index.css';
 import App from './App';
 import postsReducer from './store/reducers/posts';
+import postDetailsReducer from './store/reducers/postDetails';
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     posts: postsReducer,
+    post: postDetailsReducer
 });
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
