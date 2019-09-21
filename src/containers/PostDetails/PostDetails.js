@@ -12,8 +12,6 @@ import * as actions from '../../store/actions/index';
 
 class PostDetails extends Component {
     state = {
-        loading: true,
-        postData: null,
         error: false,
         commentReplyId: null,
         liked: false,
@@ -38,7 +36,7 @@ class PostDetails extends Component {
     }
 
     render() {
-        let post = <FullPost liked={this.state.liked} postData={this.props.postData} postLikeHandler={this.postLikeHandler} loading={this.state.loading} />;
+        let post = <FullPost liked={this.state.liked} postData={this.props.postData} postLikeHandler={this.postLikeHandler} loading={this.props.loading} />;
         if (this.state.error) {
             post = <p> There was some problem loading Topic. Please try again later! </p>
         }
@@ -58,7 +56,8 @@ class PostDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        postData: state.post.post
+        postData: state.post.post,
+        loading: state.post.loading
     }
 }
 

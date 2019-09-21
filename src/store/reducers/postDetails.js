@@ -1,14 +1,14 @@
 import * as actionType from '../actions/actionTypes';
 const initialState = {
-    post: null
+    post: null,
+    loading: true,
 }
 
 const addPostDetails = (state, action) => {
-    let postDetails = null;
-    postDetails = action.post
     return {
         ...state,
-        post: postDetails
+        post: action.post,
+        loading: false
     }
 }
 
