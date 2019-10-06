@@ -1,0 +1,12 @@
+.ReactQuill div div {
+    min-height: 18em;
+}
+
+.ReactQuill div:first-child {
+    border-top-right-radius: 0.3em;
+    border-top-left-radius: 0.3em;
+}
+.ReactQuill div:last-child {
+    border-bottom-right-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+}

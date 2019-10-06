@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import Posts from '../../components/Posts/Posts';
 import styles from './HomePage.module.css';
-import axios from '../../axios';
 import * as actions from '../../store/actions/index';
 class HomePage extends Component {
     state = {
@@ -13,6 +12,8 @@ class HomePage extends Component {
     }
 
     componentDidMount () {
+        console.log('mounted homepage');
+        
         this.props.onInitPosts();
     }
     render() {
@@ -24,7 +25,6 @@ class HomePage extends Component {
             'Entertainment',
             'Others'
         ];
-        console.log(this.props.posts);
         
         return (
             <section className={styles.Main}>
