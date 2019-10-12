@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card } from 'antd';
 import { connect } from 'react-redux'
 
-import axios from '../../axios';
 // import { getUsernameInitials } from '../../utils';
 import FullPost from '../../components/FullPost/FullPost';
 import Comments from '../../components/Comments/Comments';

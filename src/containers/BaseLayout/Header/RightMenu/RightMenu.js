@@ -1,11 +1,12 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import { Icon, Avatar, Button } from 'antd'
 
 import classes from './RightMenu.module.css';
 
 const rightMenu = (props) => (
     <div className={classes.RightMenu}>
-        <Button onClick={() => props.clickHandler()} type="primary">Create a Topic</Button>
+        <Button onClick={() => props.history.push('/post/create')} type="primary">Create a Topic</Button>
         <Icon className={classes.BellIcon} type="bell" />
         <Avatar className={classes.Avatar}>
             {props.username}
@@ -13,4 +14,4 @@ const rightMenu = (props) => (
     </div>
 );
 
-export default rightMenu;
+export default withRouter(rightMenu);

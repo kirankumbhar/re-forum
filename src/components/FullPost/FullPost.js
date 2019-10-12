@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Skeleton, Card, Avatar } from 'antd';
 
+import styles from './FullPost.module.css';
 import { getUsernameInitials } from '../../utils';
 import ActionItems from '../ActionItems/ActionItems';
 
@@ -17,7 +18,7 @@ const fullPost = (props) => {
                     }
                     title={props.postData.author}
                 />
-                <p>{props.postData.description}</p>
+                <div className={styles.Description} dangerouslySetInnerHTML={{__html: props.postData.description}}/>
             </Fragment>
         );
     }

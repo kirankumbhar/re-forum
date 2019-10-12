@@ -10,3 +10,7 @@
     border-bottom-right-radius: 0.3em;
     border-bottom-left-radius: 0.3em;
 }
+.Form {
+    max-width: 900px;
+    margin: 0 auto;
+}

@@ -36,7 +36,7 @@ const Comments = (props) => {
             </span>,
             <span onClick={(event) => props.commentReplyHandler(event)} id={comment.id} key={"comment-nested-reply-to" + comment.id}>Reply to</span>
           ]}
-          author={<a>{comment.author}</a>}
+          author={<a href="#">{comment.author}</a>}
           avatar={
             <Avatar>JD</Avatar>
           }
