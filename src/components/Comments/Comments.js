@@ -1,7 +1,7 @@
 import React from 'react';
 import { Comment, Avatar, Tooltip, Icon } from 'antd';
 
-import CommentForm from './CommentForm/CommentForm';
+import CommentForm from '../../containers/CommentForm/CommentForm';
 
 //dummy comment data
 let comments = [];

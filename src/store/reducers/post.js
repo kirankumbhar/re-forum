@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                postCreated: true
+                postCreated: false
             }
         default:
             return state;

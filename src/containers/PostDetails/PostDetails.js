@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // import { getUsernameInitials } from '../../utils';
 import FullPost from '../../components/FullPost/FullPost';
 import Comments from '../../components/Comments/Comments';
-import CommentForm from '../../components/Comments/CommentForm/CommentForm';
+import CommentForm from '../CommentForm/CommentForm';
 import styles from './PostDetails.module.css';
 import * as actions from '../../store/actions/index';
 
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitPost : (id) => dispatch(actions.initPost(id))
+        onInitPost : (id) => dispatch(actions.getPost(id))
     }
 }
 

@@ -1,21 +1,36 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
 
-export const setPost = (postData) => {
+export const getPostStart = () => {
     return {
-        type: actionTypes.SET_POST,
+        type: actionTypes.GET_POST_START
+    }
+}
+
+export const getPostSuccess = (postData) => {
+    return {
+        type: actionTypes.GET_POST_SUCCESS,
         post: postData
     }
 }
 
-export const initPost = (id) => {
+export const getPostFail = (error) => {
+    return {
+        type: actionTypes.GET_POST_FAIL,
+        error: error
+    }
+}
+
+export const getPost = (id) => {
     return dispatch => {
+        dispatch(getPostStart());
         axios.get('./posts/' + id + '.json' )
             .then(response => {
-                dispatch(setPost(response.data));
+                dispatch(getPostSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
+                dispatch(getPostFail(error));
             })
     }
 }
+
