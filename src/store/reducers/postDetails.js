@@ -2,7 +2,12 @@ import * as actionType from '../actions/actionTypes';
 const initialState = {
     post: null,
     loading: false,
-    error: ''
+    postError: '',
+    commentLoading: false,
+    commentError: '',
+    comments: [],
+    commentsLoading: false,
+    commentsError: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,8 +23,37 @@ const reducer = (state = initialState, action) => {
         }
         case actionType.GET_POST_FAIL: return {
             ...state,
-            error: action.error,
+            postError: action.error,
             loading: false
+        }
+        case actionType.CREATE_COMMENT_START: return {
+            ...state,
+            commentLoading: true
+        }
+        case actionType.CREATE_COMMENT_SUCCESS: 
+        return {
+            ...state,
+            comments: state.comments.concat(action.commentData),
+            commentLoading: false
+        }
+        case actionType.CREATE_COMMENT_FAIL: return {
+            ...state,
+            commentError: action.error,
+            commentLoading: false
+        }
+        case actionType.GET_COMMENTS_START: return {
+            ...state,
+            commentsLoading: true
+        }
+        case actionType.GET_COMMENTS_SUCCESS: return {
+            ...state,
+            comments: action.commentsData,
+            commentsLoading: false
+        }
+        case actionType.GET_COMMENTS_FAIL: return {
+            ...state,
+            commentsError: action.error,
+            commentsLoading: false
         }
 
         default: return state;

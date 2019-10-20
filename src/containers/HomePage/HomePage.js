@@ -12,8 +12,6 @@ class HomePage extends Component {
     }
 
     componentDidMount () {
-        console.log('mounted homepage');
-        
         this.props.onInitPosts();
     }
     render() {

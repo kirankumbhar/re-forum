@@ -1,5 +1,5 @@
 export { initPosts } from './posts';
 
-export { getPost } from './postDetails';
+export { getPost, createComment, getComments } from './postDetails';
 
 export { createPost } from './post';

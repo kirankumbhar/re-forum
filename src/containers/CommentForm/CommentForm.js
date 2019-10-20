@@ -3,6 +3,10 @@ import { Comment, Avatar, Form, Button } from 'antd'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+import reactQuillStyles from '../../containers/CreatePost/CreatePost.module.css';
+import * as actions from '../../store/actions/index';
+import { connect } from 'react-redux';
+
 class CommentForm extends Component {
     constructor(props) {
         super(props)
@@ -12,8 +16,25 @@ class CommentForm extends Component {
         this.updateCommentText = this.updateCommentText.bind(this)
     }
 
-    updateCommentText(value) {
+    updateCommentText(value) {  
         this.setState({commentText: value})
+    }
+
+    addComment = () => {
+        let parentCommentId = '';
+        
+        if (this.props.parentCommentId) {
+            parentCommentId = this.props.parentCommentId;
+        }
+        let commentData = {
+            author: "John Doe",
+            comment: this.state.commentText,
+            likes: 0,
+            last_modified_at: "just now",
+            parentCommentId: parentCommentId
+        }
+        this.props.onCreatecomment(this.props.postData.id, commentData);
+
     }
 
     quillModules = {
@@ -41,10 +62,10 @@ class CommentForm extends Component {
                 content = {
                     <div>
                         <Form.Item>
-                        <ReactQuill formats={this.quillFormats} theme="snow" modules={this.quillModules} value={this.state.commentText} onChange={this.updatecommentText} /> 
+                        <ReactQuill className={reactQuillStyles.ReactQuill} formats={this.quillFormats} theme="snow" modules={this.quillModules} value={this.state.commentText} onChange={this.updateCommentText} /> 
                         </Form.Item>
                         <Form.Item>
-                            <Button htmlType="button" loading={this.props.loading} onClick={this.props.onClick} type="primary">
+                            <Button htmlType="button" loading={this.props.loading} onClick={this.addComment} type="primary">
                                 Add Comment
                             </Button>
                         </Form.Item>
@@ -55,4 +76,16 @@ class CommentForm extends Component {
     }
 }
 
-export default CommentForm;
+const mapStateToProps = (state) => {
+    return {
+        postData: state.post.post,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+       onCreatecomment: (postId, commentData) => dispatch(actions.createComment(postId, commentData))  
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

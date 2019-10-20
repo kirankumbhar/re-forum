@@ -18,6 +18,7 @@ class PostDetails extends Component {
 
     componentDidMount() {
         this.props.onInitPost(this.props.match.params.id);
+        this.props.onInitComments(this.props.match.params.id);
     }
 
     commentReplyHandler = (event) => {
@@ -46,7 +47,7 @@ class PostDetails extends Component {
                 <section className={styles.AddComment}>
                     <CommentForm />
                 </section>
-                <Comments commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
+                <Comments comments={this.props.comments} loading={this.props.commentsLoading} commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
                 </Card>
             </section>
         )
@@ -56,13 +57,16 @@ class PostDetails extends Component {
 const mapStateToProps = (state) => {
     return {
         postData: state.post.post,
-        loading: state.post.loading
+        loading: state.post.loading,
+        comments: state.post.comments,
+        commentsLoading: state.post.commentsLoading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitPost : (id) => dispatch(actions.getPost(id))
+        onInitPost : (id) => dispatch(actions.getPost(id)),
+        onInitComments : (id) => dispatch(actions.getComments(id))
     }
 }
 
