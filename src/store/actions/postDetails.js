@@ -114,3 +114,10 @@ export const getCommentsFail = (error) => {
         error: error
     }
 }
+
+export const toggleCommentReply = (parentCommentId) => {
+    return {
+        type: actionTypes.TOGGLE_COMMENT_REPLY,
+        parentCommentId: parentCommentId
+    }
+}

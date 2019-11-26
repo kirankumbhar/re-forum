@@ -33,7 +33,8 @@ class CommentForm extends Component {
             last_modified_at: "just now",
             parentCommentId: parentCommentId
         }
-        this.props.onCreatecomment(this.props.postData.id, commentData);
+        this.props.onCreatecomment(this.props.postData.id, parentCommentId, commentData);
+        // this.setState({commentText: ''});
 
     }
 
@@ -65,7 +66,7 @@ class CommentForm extends Component {
                         <ReactQuill className={reactQuillStyles.ReactQuill} formats={this.quillFormats} theme="snow" modules={this.quillModules} value={this.state.commentText} onChange={this.updateCommentText} /> 
                         </Form.Item>
                         <Form.Item>
-                            <Button htmlType="button" loading={this.props.loading} onClick={this.addComment} type="primary">
+                            <Button htmlType="button" loading={this.props.parentId === this.props.parentCommentId ?  this.props.commentLoading : false} onClick={this.addComment} type="primary">
                                 Add Comment
                             </Button>
                         </Form.Item>
@@ -79,12 +80,14 @@ class CommentForm extends Component {
 const mapStateToProps = (state) => {
     return {
         postData: state.post.post,
+        commentLoading: state.post.commentLoading,
+        parentId: state.post.parentCommentId
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       onCreatecomment: (postId, commentData) => dispatch(actions.createComment(postId, commentData))  
+       onCreatecomment: (postId, parentCommentId, commentData) => dispatch(actions.createComment(postId, parentCommentId,commentData))  
     }
 }
 

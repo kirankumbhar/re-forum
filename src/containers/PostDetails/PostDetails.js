@@ -47,7 +47,7 @@ class PostDetails extends Component {
                 <section className={styles.AddComment}>
                     <CommentForm />
                 </section>
-                <Comments comments={this.props.comments} loading={this.props.commentsLoading} commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
+                <Comments comments={this.props.comments} commentLoading={this.props.commentLoading}  loading={this.props.commentsLoading} commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
                 </Card>
             </section>
         )
@@ -59,7 +59,8 @@ const mapStateToProps = (state) => {
         postData: state.post.post,
         loading: state.post.loading,
         comments: state.post.comments,
-        commentsLoading: state.post.commentsLoading
+        commentsLoading: state.post.commentsLoading, //loading while fetching all comments
+        commentLoading: state.post.commentLoading //loading while new comment is created
     }
 }
 

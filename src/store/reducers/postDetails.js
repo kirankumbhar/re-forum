@@ -7,7 +7,8 @@ const initialState = {
     commentError: '',
     comments: [],
     commentsLoading: false,
-    commentsError: ''
+    commentsError: '',
+    parentCommentId: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +55,11 @@ const reducer = (state = initialState, action) => {
             ...state,
             commentsError: action.error,
             commentsLoading: false
+        }
+
+        case actionType.TOGGLE_COMMENT_REPLY: return {
+            ...state,
+            parentCommentId: action.parentCommentId
         }
 
         default: return state;

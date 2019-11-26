@@ -25,7 +25,7 @@ const fullPost = (props) => {
     return (
         <Fragment>
             <Card style={{ marginTop: 16 }}>
-                <Skeleton loading={props.loading} avatar>
+                <Skeleton loading={props.loading} avatar paragraph={{ rows: 6 }}>
                     {post}
                 </Skeleton>
                 <ActionItems liked={props.liked} postLikeHandler={props.postLikeHandler} />
