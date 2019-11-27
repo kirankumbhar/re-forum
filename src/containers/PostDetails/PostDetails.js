@@ -12,20 +12,12 @@ import * as actions from '../../store/actions/index';
 class PostDetails extends Component {
     state = {
         error: false,
-        commentReplyId: null,
         liked: false,
     }
 
     componentDidMount() {
         this.props.onInitPost(this.props.match.params.id);
         this.props.onInitComments(this.props.match.params.id);
-    }
-
-    commentReplyHandler = (event) => {
-        this.setState({
-            ...this.state,
-            commentReplyId: event.target.id
-        });
     }
 
     postLikeHandler = () => {
@@ -36,7 +28,12 @@ class PostDetails extends Component {
     }
 
     render() {
-        let post = <FullPost liked={this.state.liked} postData={this.props.postData} postLikeHandler={this.postLikeHandler} loading={this.props.loading} />;
+        let post = <FullPost 
+            liked={this.state.liked}
+            postData={this.props.postData}
+            postLikeHandler={this.postLikeHandler}
+            loading={this.props.loading}
+        />;
         if (this.state.error) {
             post = <p> There was some problem loading Topic. Please try again later! </p>
         }
@@ -44,10 +41,14 @@ class PostDetails extends Component {
             <section className={styles.PostDetails}>
                 {post}
                 <Card className={styles.CommentsCard}>
-                <section className={styles.AddComment}>
-                    <CommentForm />
-                </section>
-                <Comments comments={this.props.comments} commentLoading={this.props.commentLoading}  loading={this.props.commentsLoading} commentReplyHandler={this.commentReplyHandler} commentReplyId={this.state.commentReplyId} />
+                    <section className={styles.AddComment}>
+                        <CommentForm />
+                    </section>
+                    <Comments
+                        comments={this.props.comments}
+                        commentLoading={this.props.commentLoading}
+                        loading={this.props.commentsLoading}
+                    />
                 </Card>
             </section>
         )
