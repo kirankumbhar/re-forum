@@ -3,6 +3,7 @@ import { List, Icon, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 
 import styles from './Post.module.css';
+import { getUsernameInitials } from '../../../utils';
 
 
 const IconText = ({ type, text }) => (
@@ -31,7 +32,7 @@ const post = (props) => {
             <List.Item.Meta
             className={styles.ListItemMeta}
                 avatar={
-                    <Avatar>JD</Avatar>
+                <Avatar>{getUsernameInitials(props.author)}</Avatar>
                 }
                 title={props.author}
 

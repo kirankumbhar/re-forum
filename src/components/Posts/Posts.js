@@ -2,6 +2,7 @@ import React from 'react';
 import { List } from 'antd';
 
 import Post from './Post/Post';
+import * as constants from '../../constants'
 
 const posts = (props) => {
     return (
@@ -18,9 +19,9 @@ const posts = (props) => {
             renderItem={item => (
                 <Post
                     id={item.id}
-                    title={item.title}
-                    description={item.description}
-                    author={item.author}
+                    title={item[constants.POST_TITLE]}
+                    description={item[constants.POST_DESCRIPTION]}
+                    author={item[constants.POST_AUTHOR]}
                     publishedDate={item.publishedDate}
                 />
             )}

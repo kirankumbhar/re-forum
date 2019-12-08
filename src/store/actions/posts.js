@@ -10,15 +10,12 @@ export const setPosts = (postData) => {
 
 export const initPosts = () => {
    return dispatch => {
-       axios.get('/posts.json')
+       axios.get('/posts/')
         .then(response => {
-            console.log(response);
-            
             dispatch(setPosts(response.data));
         })
         .catch(error => {
             //dispatch failed action
-            console.log(error);
         })
    } 
 }

@@ -13,10 +13,10 @@ const IconText = ({type, value, theme, inlineStyle, iconStyle, onClick}) => (
 const actionItems = (props) => {
     return (
         <div className={styles.ActionItems}>
-            {props.liked ? <IconText onClick={props.postLikeHandler} theme="filled" type="like" value="19" /> : <IconText onClick={props.postLikeHandler} type="like" iconStyle={{ cursor:'pointer' }} value="19" />}
+            {props.liked ? <IconText onClick={props.postLikeHandler} theme="filled" type="like" value={props.likeCount} /> : <IconText onClick={props.postLikeHandler} type="like" iconStyle={{ cursor:'pointer' }} value={props.likeCount} />}
             <IconText type="star" inlineStyle={{ float: 'right' }}/>
-            <IconText type="message" value="6" />
-            <IconText type="eye" value="123" />
+            <IconText type="message" value={props.commentCount} />
+            <IconText type="eye" value={props.viewCount} />
         </div>
     )
 }

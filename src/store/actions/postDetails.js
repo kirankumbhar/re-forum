@@ -5,7 +5,7 @@ import axios from '../../axios';
 export const getPost = (id) => {
     return dispatch => {
         dispatch(getPostStart());
-        axios.get('/posts/' + id + '.json' )
+        axios.get('/posts/' + id)
             .then(response => {
                 response.data['id'] = id;
                 dispatch(getPostSuccess(response.data));
@@ -37,10 +37,10 @@ export const getPostFail = (error) => {
 }
 
 //create comment on post details page
-export const createComment = (postId, commentData) => {
+export const createComment = (postId, parentCommentId, commentData) => {
     return dispatch => {
         dispatch(createCommentStart());
-        axios.post('/posts/' + postId + '/comments.json', commentData)
+        axios.post('/comments/', commentData)
             .then(response => {
                 dispatch(createCommentSuccess(commentData));
             })
@@ -74,7 +74,7 @@ export const createCommentFail = (error) => {
 export const getComments = (postId) => {
     return dispatch => {
         dispatch(getCommentsStart());
-        axios.get('/posts/' + postId + '/comments.json')
+        axios.get('/comments/?post_id=' + postId)
             .then(response => {
                 dispatch(getCommentsSuccess(response.data));
             })
