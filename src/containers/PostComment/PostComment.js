@@ -19,7 +19,35 @@ class PostComment extends Component {
     }
 
     render () {
-        console.log(this.props.reply);
+        let replyComments = null
+
+        if (this.props.reply) {
+            // if replies exist loop through it without having 'reply to' button
+            replyComments = this.props.reply.map((reply) => {
+                return <Comment
+                key={reply.id}
+                actions={[
+                    <span key={"comment-basic-like "+ reply.id}>
+                    <Tooltip title="Like">
+                        <Icon
+                        type="like"
+                        theme='outlined'
+                        onClick={this.props.comment.like}
+                        />
+                    </Tooltip>
+                    <span style={{ paddingLeft: 8, cursor: 'auto' }}>{reply[constants.COMMENT_LIKES]}</span>
+                    </span>
+                ]}
+                author={<a href="javascript:void(0);">{reply[constants.COMMENT_AUTHOR]}</a>}
+                avatar={
+                    <Avatar>{getUsernameInitials(reply[constants.COMMENT_AUTHOR])}</Avatar>
+                }
+                content={
+                    <div dangerouslySetInnerHTML={{__html: reply[constants.COMMENT_BODY]}}/>
+                }
+            ></Comment>
+            });
+        }
         
         return(
             <Comment
@@ -46,31 +74,7 @@ class PostComment extends Component {
                 }
             >
                 {this.state.showReplyComment && this.props.parentCommentId === this.props.id ? <CommentForm parentCommentId = {this.props.id}/> : null}
-                {
-                    this.props.reply ?<Comment
-                        key={this.props.reply.id}
-                        actions={[
-                            <span key={"comment-basic-like "+ this.props.reply.id}>
-                            <Tooltip title="Like">
-                                <Icon
-                                type="like"
-                                theme='outlined'
-                                onClick={this.props.comment.like}
-                                />
-                            </Tooltip>
-                            <span style={{ paddingLeft: 8, cursor: 'auto' }}>{this.props.reply[constants.COMMENT_LIKES]}</span>
-                            </span>,
-                            <span onClick={(event) => this.replyClickHandler(event)} id={this.props.reply.id} key={"comment-nested-reply-to" + this.props.reply.id}>Reply to</span>
-                        ]}
-                        author={<a href="javascript:void(0);">{this.props.reply[constants.COMMENT_AUTHOR]}</a>}
-                        avatar={
-                            <Avatar>{getUsernameInitials(this.props.reply[constants.COMMENT_AUTHOR])}</Avatar>
-                        }
-                        content={
-                            <div dangerouslySetInnerHTML={{__html: this.props.reply[constants.COMMENT_BODY]}}/>
-                        }
-                    ></Comment> : null
-                }
+                { replyComments }
             </Comment>
         );
     }
