@@ -55,6 +55,8 @@ class CommentForm extends Component {
       ]
 
     render() {
+        console.log(this.state.commentText.replace(/<(.|\n)*?>/g, '').trim().length);
+        console.log(this.state.commentText);
         return (
             <Comment
                 avatar = {
@@ -63,10 +65,24 @@ class CommentForm extends Component {
                 content = {
                     <div>
                         <Form.Item>
-                        <ReactQuill className={reactQuillStyles.ReactQuill} formats={this.quillFormats} theme="snow" modules={this.quillModules} value={this.state.commentText} onChange={this.updateCommentText} /> 
+                        <ReactQuill
+                            className={reactQuillStyles.ReactQuill}
+                            formats={this.quillFormats}
+                            theme="snow"
+                            modules={this.quillModules}
+                            value={this.state.commentText}
+                            onChange={this.updateCommentText}
+                        />
                         </Form.Item>
                         <Form.Item>
-                            <Button htmlType="button" loading={this.props.parentId === this.props.parentCommentId ?  this.props.commentLoading : false} onClick={this.addComment} type="primary">
+                            <Button 
+                                htmlType="button"
+                                loading={this.props.parentId === this.props.parentCommentId ?  this.props.commentLoading : false}
+                                onClick={this.addComment} type="primary"
+                                disabled={
+                                    this.state.commentText.replace(/<(.|\n)*?>/g, '').trim().length === 0 ? true : false
+                                }
+                            >
                                 Add Comment
                             </Button>
                         </Form.Item>

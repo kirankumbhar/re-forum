@@ -1,0 +1,14 @@
+.Login {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.Header {
+    width: fit-content;
+    padding: 1em;
+    margin: 0 auto;
+}
+
+.MR1em {
+    margin-right: 1em;
+}

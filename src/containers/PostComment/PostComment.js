@@ -7,7 +7,7 @@ import * as actions from '../../store/actions/index';
 import * as constants from '../../constants';
 import { getUsernameInitials } from '../../utils'
 
-// PostComment component is wrapper over antd Commentto handle reply and likes 
+// PostComment component is wrapper over antd Comment to handle reply and likes 
 class PostComment extends Component {
     state = {
         showReplyComment: false
