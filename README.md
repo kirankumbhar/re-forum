@@ -14,11 +14,11 @@ Discussion Forum based on react.js
 - View all posts on the homepage (Almost done, trimming description remaining)
 - Create a new Post :heavy_check_mark:
 - Text editor support using react-quill :heavy_check_mark:
-- View post details and comments on the page (In Progress)
-- Reply to comment (To Do)
-- Add comment and hit like to the post (To do)
+- View post details and comments on the page :heavy_check_mark:
+- Reply to comment (In Progress)
+- Add comment and hit like to the post (In Progress)
 - Mark Post as favourite (To do)
 - Search Post (To do)
 - Filter posts based on time, catgeories and popularity (To do)
-- Auth (To do)
+- Auth (In Progress)
 
