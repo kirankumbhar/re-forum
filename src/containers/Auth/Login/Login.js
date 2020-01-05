@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Alert } from 'antd';
 
 import styles from './Login.module.css'
+import { connect } from 'react-redux';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -14,9 +15,23 @@ class NormalLoginForm extends React.Component {
   };
 
   render() {
+    let regsiterRedirectMessage = null;
+    if (this.props.history.action === "REPLACE" && this.props.isUserRegistered) {
+      regsiterRedirectMessage = <Alert
+      message="Registration Successful"
+      description="Thank you for registering. You can login now"
+      type="success"
+      showIcon
+      className={styles.Alert}
+    />
+    }
+
+    
+    
     const { getFieldDecorator } = this.props.form;
     return (
         <Fragment>
+            {regsiterRedirectMessage}
             <h2 className={styles.Header}>Log In</h2>
             <Form onSubmit={this.handleSubmit} className={styles.Login}>
                 <Form.Item>
@@ -54,4 +69,10 @@ class NormalLoginForm extends React.Component {
 
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
 
-export default WrappedNormalLoginForm;
+const mapStateToProps = (state) => {
+  return {
+    isUserRegistered: state.auth.isUserRegistered
+  }
+}
+
+export default connect(mapStateToProps)(WrappedNormalLoginForm);

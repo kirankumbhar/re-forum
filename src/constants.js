@@ -10,3 +10,11 @@ export const COMMENT_LIKES = process.env.REACT_APP_COMMENT_LIKES
 export const COMMENT_LAST_UPDATED = process.env.REACT_APP_COMMENT_LAST_UPDATED
 export const PARENT_COMMENT_ID = process.env.REACT_APP_PARENT_COMMENT_ID
 
+export const FIRST_NAME = process.env.REACT_APP_FIRST_NAME
+export const LAST_NAME = process.env.REACT_APP_LAST_NAME
+export const USERNAME = process.env.REACT_APP_USERNAME
+export const EMAIL = process.env.REACT_APP_EMAIL
+export const PASSWORD = process.env.REACT_APP_PASSWORD
+
+export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+export const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET

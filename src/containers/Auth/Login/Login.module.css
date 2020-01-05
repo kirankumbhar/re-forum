@@ -12,3 +12,8 @@
 .MR1em {
     margin-right: 1em;
 }
+
+.Alert {
+    max-width: 300px;
+    margin: 0 auto;
+}
