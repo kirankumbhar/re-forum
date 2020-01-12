@@ -91,9 +91,30 @@ class RegistrationForm extends React.Component {
     
     let registrationError = null;
     if (this.props.error) {
+      let description = "Unable to register user. Please try again later.";
+      switch (this.props.errorDetailsType) {
+        case 'string':
+          description = this.props.errorDetails;
+          break;
+
+        case 'object':
+          description = [];
+          let errorObj =  this.props.errorDetails;
+          for (const key in errorObj) {
+            if (errorObj.hasOwnProperty(key)) {
+              const element = errorObj[key];
+              description.push(<p>{element}</p>);
+            }
+          }
+          break;
+
+        default:
+          break;
+      }
+
       registrationError = <Alert
-      message="Failed to Register!"
-      description="Oops! Unable to register right now. Please try again later."
+      message="Oops! Failed to Register."
+      description={description}
       type="error"
       showIcon
       className={styles.Alert}
@@ -195,7 +216,9 @@ const mapStateToProps = (state) => {
   return {
     isUserRegistered: state.auth.isUserRegistered,
     loading: state.auth.loading,
-    error: state.auth.error
+    error: state.auth.error,
+    errorDetails: state.auth.errorDetails,
+    errorDetailsType: state.auth.errorDetailsType
   }
 }
 

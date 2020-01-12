@@ -16,10 +16,11 @@ export const registerUserSuccess = (postId) => {
     }
 }
 
-export const registerUserFail = (error) => {
+export const registerUserFail = (errorDetails, detailsType) => {
     return {
         type: actionTypes.REGISTER_USER_FAIL,
-        error: error
+        errorDetails: errorDetails,
+        errorDetailsType: detailsType
     }
 }
 
@@ -31,7 +32,17 @@ export const registerUser = (postData) => {
         axios.post('/register/', postData).then(response => {
             dispatch(registerUserSuccess(response.data.name));
         }).catch(error => {
-            dispatch(registerUserFail(error));
+            let errorDetails, errorDetailsType;
+            if (constants.REGISTER_ERROR_MSG_KEY) {
+                errorDetails = error.response.data[constants.REGISTER_ERROR_MSG_KEY];
+                errorDetailsType = 'string';
+            }
+            else {
+                errorDetails = error.response.data;
+                errorDetailsType = 'object';
+
+            }
+            dispatch(registerUserFail(errorDetails, errorDetailsType));
         });
     }
 }

@@ -16,5 +16,8 @@ export const USERNAME = process.env.REACT_APP_USERNAME
 export const EMAIL = process.env.REACT_APP_EMAIL
 export const PASSWORD = process.env.REACT_APP_PASSWORD
 
+export const REGISTER_ERROR_MSG_KEY = process.env.REACT_APP_REGISTER_ERROR_MSG_KEY || null
+export const LOGIN_ERROR_MSG_KEY = process.env.REACT_APP_LOGIN_ERROR_MSG_KEY
+
 export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 export const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET

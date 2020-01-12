@@ -4,6 +4,8 @@ const initialState = {
     loading: false,
     isUserRegistered: false,
     error: false,
+    errorDetails: null,
+    errorDetailsType: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +28,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: true,
+                errorDetails: action.errorDetails,
+                errorDetailsType: action.errorDetailsType
             }
     
         default:
