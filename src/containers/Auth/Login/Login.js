@@ -1,20 +1,26 @@
 import React, { Fragment } from 'react';
 import { Form, Icon, Input, Button, Alert } from 'antd';
 
-import styles from './Login.module.css'
+import styles from './Login.module.css';
+import * as actions from '../../../store/actions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.onLogin(values);
       }
     });
   };
 
   render() {
+    if (this.props.isUserActive) {
+      return <Redirect to='/'/>
+    }
+
     let regsiterRedirectMessage = null;
     if (this.props.history.action === "REPLACE" && this.props.isUserRegistered) {
       regsiterRedirectMessage = <Alert
@@ -26,8 +32,6 @@ class NormalLoginForm extends React.Component {
     />
     }
 
-    
-    
     const { getFieldDecorator } = this.props.form;
     return (
         <Fragment>
@@ -71,8 +75,15 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 
 const mapStateToProps = (state) => {
   return {
-    isUserRegistered: state.auth.isUserRegistered
+    isUserRegistered: state.auth.isUserRegistered,
+    isUserActive: state.auth.isUserActive
   }
 }
 
-export default connect(mapStateToProps)(WrappedNormalLoginForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (loginData) => dispatch(actions.logIn(loginData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);

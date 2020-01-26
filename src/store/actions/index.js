@@ -4,4 +4,4 @@ export { getPost, createComment, getComments, toggleCommentReply } from './postD
 
 export { createPost } from './post';
 
-export {registerUser} from './auth';
+export {registerUser, logIn} from './auth';

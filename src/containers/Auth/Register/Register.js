@@ -86,7 +86,7 @@ class RegistrationForm extends React.Component {
     };
 
     if (this.props.isUserRegistered) {
-      return <Redirect to='/signin'/>
+      return <Redirect to='/login'/>
     }
     
     let registrationError = null;
@@ -123,7 +123,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <Fragment>
-        <h2 style={{ textAlign: "center"}}>Sign Up</h2>
+        <h2 style={{ textAlign: "center"}}>Log Up</h2>
         <Row type="flex" justify="center" style={{ flexWrap: "wrap" }}>
         <Form {...formItemLayout} style={{ width: '600px'}} onSubmit={this.handleSubmit}>
         <Form.Item label="First Name" labelAlign="left">
@@ -198,9 +198,9 @@ class RegistrationForm extends React.Component {
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" className={styles.MR1em} loading={this.props.loading}>
-            Sign Up
+            Log Up
           </Button>
-          Already have an account? <a href="/signin">Log in!</a>
+          Already have an account? <a href="/login">Log in!</a>
         </Form.Item>
         {registrationError}
       </Form>

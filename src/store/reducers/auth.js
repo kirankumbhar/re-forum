@@ -1,8 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
+import * as constants from '../../constants';
 
 const initialState = {
     loading: false,
     isUserRegistered: false,
+    isUserActive: false, //logged in
     error: false,
     errorDetails: null,
     errorDetailsType: null
@@ -31,11 +33,35 @@ const reducer = (state = initialState, action) => {
                 errorDetails: action.errorDetails,
                 errorDetailsType: action.errorDetailsType
             }
+
+        case actionTypes.LOGIN_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.LOGIN_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isUserActive: true,
+            }
+        case actionTypes.LOGIN_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorDetails: action.errorDetails,
+                errorDetailsType: action.errorDetailsType
+            }
     
         default:
-            return {
-                state
+            if (localStorage['at']) {
+                return {
+                    ...state,
+                    isUserActive: true
+                }
             }
+            return state
     }
 }
 
