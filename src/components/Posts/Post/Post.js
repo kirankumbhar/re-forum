@@ -20,7 +20,7 @@ const post = (props) => {
             className={styles.Post}
             key={props.id}
             actions={[
-                <IconText type="like-o" text={(Math.random() * 100).toFixed(0).toString()} />,
+                <IconText type="like-o" text={props.likes} />,
                 <IconText type="message" text={(Math.random() * 10).toFixed(0).toString()} />,
                 <IconText type="eye" text={(Math.random() * 1000).toFixed(0).toString()} />,
                 <IconText type="clock-circle" text={props.publishedDate} />

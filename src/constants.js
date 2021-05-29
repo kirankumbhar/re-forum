@@ -1,7 +1,7 @@
-export const POST_TITLE = process.env.REACT_APP_POST_TITLE
-export const POST_AUTHOR = process.env.REACT_APP_POST_AUTHOR
-export const POST_DESCRIPTION = process.env.REACT_APP_POST_DESCRIPTION
-export const POST_LIKES = process.env.REACT_APP_POST_LIKES
+export const POST_TITLE = process.env.REACT_APP_POST_TITLE || "title"
+export const POST_AUTHOR = process.env.REACT_APP_POST_AUTHOR || "author_name"
+export const POST_DESCRIPTION = process.env.REACT_APP_POST_DESCRIPTION || "descripition"
+export const POST_LIKES = process.env.REACT_APP_POST_LIKES || "likes"
 export const POST_VIEWS = process.env.REACT_APP_POST_VIEWS
 
 export const COMMENT_BODY = process.env.REACT_APP_COMMENT_BODY
