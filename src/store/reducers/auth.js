@@ -5,6 +5,9 @@ const initialState = {
     loading: false,
     isUserRegistered: false,
     isUserActive: false, //logged in
+    username: "",
+    firstName: "",
+    lastName: "",
     error: false,
     errorDetails: null,
     errorDetailsType: null
@@ -53,7 +56,23 @@ const reducer = (state = initialState, action) => {
                 errorDetails: action.errorDetails,
                 errorDetailsType: action.errorDetailsType
             }
-    
+        case actionTypes.MEAPI_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.MEAPI_SUCCESS:
+            return {
+                ...state,
+                firstName: action.firstName,
+                lastName: action.lastName,
+                username: action.username,
+            }
+        case actionTypes.MEAPI_FAIL:
+            return {
+                ...state,
+                loading: false,
+            }
         default:
             if (localStorage['at']) {
                 return {

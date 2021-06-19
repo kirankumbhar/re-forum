@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Comment, Avatar, Form, Button } from 'antd'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -16,13 +16,13 @@ class CommentForm extends Component {
         this.updateCommentText = this.updateCommentText.bind(this)
     }
 
-    updateCommentText(value) {  
-        this.setState({commentText: value})
+    updateCommentText(value) {
+        this.setState({ commentText: value })
     }
 
     addComment = () => {
         let parentCommentId = '';
-        
+
         if (this.props.parentCommentId) {
             parentCommentId = this.props.parentCommentId;
         }
@@ -40,44 +40,42 @@ class CommentForm extends Component {
 
     quillModules = {
         toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote'],
-          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-          ['link', 'image'],
-          ['clean']
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image'],
+            ['clean']
         ],
-      }
+    }
 
-      quillFormats = [
+    quillFormats = [
         'header',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet', 'indent', 'link', 'image'
-      ]
+    ]
 
     render() {
-        console.log(this.state.commentText.replace(/<(.|\n)*?>/g, '').trim().length);
-        console.log(this.state.commentText);
         return (
             <Comment
-                avatar = {
+                avatar={
                     <Avatar>JD</Avatar>
                 }
-                content = {
+                content={
                     <div>
                         <Form.Item>
-                        <ReactQuill
-                            className={reactQuillStyles.ReactQuill}
-                            formats={this.quillFormats}
-                            theme="snow"
-                            modules={this.quillModules}
-                            value={this.state.commentText}
-                            onChange={this.updateCommentText}
-                        />
+                            <ReactQuill
+                                className={reactQuillStyles.ReactQuill}
+                                formats={this.quillFormats}
+                                theme="snow"
+                                modules={this.quillModules}
+                                value={this.state.commentText}
+                                onChange={this.updateCommentText}
+                            />
                         </Form.Item>
                         <Form.Item>
-                            <Button 
+                            <Button
                                 htmlType="button"
-                                loading={this.props.parentId === this.props.parentCommentId ?  this.props.commentLoading : false}
+                                loading={this.props.parentId === this.props.parentCommentId ? this.props.commentLoading : false}
                                 onClick={this.addComment} type="primary"
                                 disabled={
                                     this.state.commentText.replace(/<(.|\n)*?>/g, '').trim().length === 0 ? true : false
@@ -103,7 +101,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       onCreatecomment: (postId, parentCommentId, commentData) => dispatch(actions.createComment(postId, parentCommentId,commentData))  
+        onCreatecomment: (postId, parentCommentId, commentData) => dispatch(actions.createComment(postId, parentCommentId, commentData))
     }
 }
 

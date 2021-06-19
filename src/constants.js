@@ -1,8 +1,8 @@
-export const POST_TITLE = process.env.REACT_APP_POST_TITLE
-export const POST_AUTHOR = process.env.REACT_APP_POST_AUTHOR
-export const POST_DESCRIPTION = process.env.REACT_APP_POST_DESCRIPTION
-export const POST_LIKES = process.env.REACT_APP_POST_LIKES
-export const POST_VIEWS = process.env.REACT_APP_POST_VIEWS
+export const POST_TITLE = process.env.REACT_APP_POST_TITLE || "title"
+export const POST_AUTHOR = process.env.REACT_APP_POST_AUTHOR || "author"
+export const POST_DESCRIPTION = process.env.REACT_APP_POST_DESCRIPTION || "description"
+export const POST_LIKES = process.env.REACT_APP_POST_LIKES || "likes"
+export const POST_VIEWS = process.env.REACT_APP_POST_VIEWS || "views"
 
 export const COMMENT_BODY = process.env.REACT_APP_COMMENT_BODY
 export const COMMENT_AUTHOR = process.env.REACT_APP_COMMENT_AUTHOR
@@ -22,6 +22,6 @@ export const LOGIN_ERROR_MSG_KEY = process.env.REACT_APP_LOGIN_ERROR_MSG_KEY
 export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 export const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
 
-export const LOGIN_URL=process.env.REACT_APP_LOGIN_URL
-export const OAUTH_GRANT_TYPE=process.env.REACT_APP_OAUTH_GRANT_TYPE || 'password'
-export const ACCESS_TOKEN_KEY = process.env.REACT_APP_ACCESS_TOKEN_KEY || 'access_token'
+export const LOGIN_URL = process.env.REACT_APP_LOGIN_URL || '/token/'
+export const OAUTH_GRANT_TYPE = process.env.REACT_APP_OAUTH_GRANT_TYPE || 'password'
+export const ACCESS_TOKEN_KEY = process.env.REACT_APP_ACCESS_TOKEN_KEY || 'access'

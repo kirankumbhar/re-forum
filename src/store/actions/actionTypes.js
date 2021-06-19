@@ -27,3 +27,7 @@ export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+export const MEAPI_START = 'MEPAI_START';
+export const MEAPI_SUCCESS = 'MEPAI_SUCCESS';
+export const MEAPI_FAIL = 'MEPAI_FAIL';
