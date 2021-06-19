@@ -6,8 +6,6 @@ export const getUsernameInitials = (username) => {
     }
     let firstname = [...splittedName[0].toString()];
     let lastName = [...splittedName[splittedName.length - 1].toString()];
-    console.log(firstname);
-    console.log(lastName);
     let firstInitial = ""
     let lastInitial = ""
     if (firstname.length) {

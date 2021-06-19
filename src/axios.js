@@ -15,7 +15,6 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(
     response => response,
     function (error) {
-        console.log(error.response.status)
         if (error.response.status === 401) {
             localStorage.removeItem("at");
         }
