@@ -26,7 +26,7 @@ export const createPostFail = (error) => {
 export const createPost = (postData) => {
     return dispatch => {
         dispatch(createPostStart());
-        axios.post('/posts', postData).then(response => {
+        axios.post('/posts/', postData).then(response => {
             dispatch(createPostSuccess(response.data.name));
         }).catch(error => {
             dispatch(createPostFail(error));

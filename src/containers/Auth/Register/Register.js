@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 
 import {
-    Form,
-    Input,
-    Button,
-    Alert,
-    Row,
-  } from 'antd';
+  Form,
+  Input,
+  Button,
+  Alert,
+  Row,
+} from 'antd';
 
 import styles from './Register.module.css';
 import * as actions from '../../../store/actions/';
@@ -14,7 +14,7 @@ import * as constants from '../../../constants';
 
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-  
+
 class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
@@ -86,9 +86,9 @@ class RegistrationForm extends React.Component {
     };
 
     if (this.props.isUserRegistered) {
-      return <Redirect to='/login'/>
+      return <Redirect to='/login' />
     }
-    
+
     let registrationError = null;
     if (this.props.error) {
       let description = "Unable to register user. Please try again later.";
@@ -99,7 +99,7 @@ class RegistrationForm extends React.Component {
 
         case 'object':
           description = [];
-          let errorObj =  this.props.errorDetails;
+          let errorObj = this.props.errorDetails;
           for (const key in errorObj) {
             if (errorObj.hasOwnProperty(key)) {
               const element = errorObj[key];
@@ -113,103 +113,103 @@ class RegistrationForm extends React.Component {
       }
 
       registrationError = <Alert
-      message="Oops! Failed to Register."
-      description={description}
-      type="error"
-      showIcon
-      className={styles.Alert}
-    />
+        message="Oops! Failed to Register."
+        description={description}
+        type="error"
+        showIcon
+        className={styles.Alert}
+      />
     }
 
     return (
       <Fragment>
-        <h2 style={{ textAlign: "center"}}>Log Up</h2>
+        <h2 style={{ textAlign: "center" }}>Sign Up</h2>
         <Row type="flex" justify="center" style={{ flexWrap: "wrap" }}>
-        <Form {...formItemLayout} style={{ width: '600px'}} onSubmit={this.handleSubmit}>
-        <Form.Item label="First Name" labelAlign="left">
-          {getFieldDecorator('firstName', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your First Name',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Last Name" labelAlign="left">
-          {getFieldDecorator('lastName', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your Last Name',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Username" labelAlign="left">
-          {getFieldDecorator('username', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your username',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="E-mail" labelAlign="left">
-          {getFieldDecorator('email', {
-            rules: [
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!',
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Password" hasFeedback labelAlign="left">
-          {getFieldDecorator('password', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-              {
-                validator: this.validateToNextPassword,
-              },
-            ],
-          })(<Input.Password />)}
-        </Form.Item>
-        <Form.Item label="Confirm Password" hasFeedback labelAlign="left">
-          {getFieldDecorator('confirm', {
-            rules: [
-              {
-                required: true,
-                message: 'Please confirm your password!',
-              },
-              {
-                validator: this.compareToFirstPassword,
-              },
-            ],
-          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" className={styles.MR1em} loading={this.props.loading}>
-            Log Up
+          <Form {...formItemLayout} style={{ width: '600px' }} onSubmit={this.handleSubmit}>
+            <Form.Item label="First Name" labelAlign="left">
+              {getFieldDecorator('firstName', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please input your First Name',
+                  },
+                ],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Last Name" labelAlign="left">
+              {getFieldDecorator('lastName', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please input your Last Name',
+                  },
+                ],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Username" labelAlign="left">
+              {getFieldDecorator('username', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please input your username',
+                  },
+                ],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="E-mail" labelAlign="left">
+              {getFieldDecorator('email', {
+                rules: [
+                  {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                  },
+                  {
+                    required: true,
+                    message: 'Please input your E-mail!',
+                  },
+                ],
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Password" hasFeedback labelAlign="left">
+              {getFieldDecorator('password', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please input your password!',
+                  },
+                  {
+                    validator: this.validateToNextPassword,
+                  },
+                ],
+              })(<Input.Password />)}
+            </Form.Item>
+            <Form.Item label="Confirm Password" hasFeedback labelAlign="left">
+              {getFieldDecorator('confirm', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please confirm your password!',
+                  },
+                  {
+                    validator: this.compareToFirstPassword,
+                  },
+                ],
+              })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+            </Form.Item>
+            <Form.Item {...tailFormItemLayout}>
+              <Button type="primary" htmlType="submit" className={styles.MR1em} loading={this.props.loading}>
+                Log Up
           </Button>
           Already have an account? <a href="/login">Log in!</a>
-        </Form.Item>
-        {registrationError}
-      </Form>
-      </Row>
-    </Fragment>
-  );
+            </Form.Item>
+            {registrationError}
+          </Form>
+        </Row>
+      </Fragment>
+    );
   }
 }
-  
+
 const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
 
 const mapStateToProps = (state) => {
@@ -224,7 +224,7 @@ const mapStateToProps = (state) => {
 
 const mapDispachToProps = (dispatch) => {
   return {
-    onInitRegister: (data) => dispatch(actions.registerUser(data)) 
+    onInitRegister: (data) => dispatch(actions.registerUser(data))
   }
 }
 

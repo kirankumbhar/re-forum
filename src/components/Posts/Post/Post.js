@@ -14,7 +14,7 @@ const IconText = ({ type, text }) => (
 );
 
 const post = (props) => {
-    
+
     return (
         <List.Item
             className={styles.Post}
@@ -27,14 +27,14 @@ const post = (props) => {
             ]}
         >
             <h3>
-            <Link to={'post/' + props.id}>{props.title}</Link>
+                <Link to={'post/' + props.id}>{props.title}</Link>
             </h3>
             <List.Item.Meta
-            className={styles.ListItemMeta}
+                className={styles.ListItemMeta}
                 avatar={
-                <Avatar>{getUsernameInitials(props.author)}</Avatar>
+                    <Avatar>{props.author ? getUsernameInitials(props.author) : ""}</Avatar>
                 }
-                title={props.author}
+                title={props.title}
 
             />
             <div>{props.description}</div>

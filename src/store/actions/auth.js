@@ -68,9 +68,6 @@ export const logInFail = (errorDetails, errorDetailsType) => {
 }
 
 export const logIn = (data) => {
-    data['client_id'] = constants.CLIENT_ID || ''
-    data['client_secret'] = constants.CLIENT_SECRET || ''
-    data['grant_type'] = constants.OAUTH_GRANT_TYPE
     return dispatch => {
         dispatch(logInStart());
         axios.post(constants.LOGIN_URL, data).then(response => {
@@ -88,6 +85,40 @@ export const logIn = (data) => {
 
             }
             dispatch(logInFail(errorDetails, errorDetailsType));
+        });
+    }
+}
+
+export const meApiStart = () => {
+    return {
+        type: actionTypes.MEAPI_START
+    }
+}
+
+export const meApiSuccess = (data) => {
+    return {
+        type: actionTypes.MEAPI_SUCCESS,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        username: data.username,
+    }
+}
+
+export const meApiFail = (errorDetails, errorDetailsType) => {
+    return {
+        type: actionTypes.MEAPI_FAIL,
+        errorDetails: errorDetails,
+        errorDetailsType: errorDetailsType
+    }
+}
+
+export const meApi = () => {
+    return dispatch => {
+        dispatch(meApiStart());
+        axios.get("/me").then(response => {
+            dispatch(meApiSuccess(response.data));
+        }).catch(error => {
+            dispatch(meApiFail());
         });
     }
 }

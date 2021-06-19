@@ -6,6 +6,16 @@ export const getUsernameInitials = (username) => {
     }
     let firstname = [...splittedName[0].toString()];
     let lastName = [...splittedName[splittedName.length - 1].toString()];
-    let usernameInitials = firstname[0].toUpperCase() + lastName[0].toUpperCase();
-    return usernameInitials;
+    console.log(firstname);
+    console.log(lastName);
+    let firstInitial = ""
+    let lastInitial = ""
+    if (firstname.length) {
+        firstInitial = firstname[0].toUpperCase()
+    }
+    if (lastName.length) {
+        lastInitial = lastName[0].toUpperCase();
+    }
+
+    return firstInitial + lastInitial;
 }
