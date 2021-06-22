@@ -101,6 +101,7 @@ export const meApiSuccess = (data) => {
         firstName: data.firstName,
         lastName: data.lastName,
         username: data.username,
+        loading: false,
     }
 }
 
