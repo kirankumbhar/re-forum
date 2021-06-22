@@ -12,11 +12,12 @@ import { connect } from 'react-redux';
 const { Header, Content, Footer } = Layout;
 
 class BaseLayout extends Component {
-    componentDidUpdate() {
+    componentDidMount() {
         if (this.props.isUserActive) {
             this.props.getUser();
         }
     }
+    compo
 
     render() {
         return (<Layout className={classes.Layout}>
@@ -28,7 +29,7 @@ class BaseLayout extends Component {
                     this.props.isUserActive ?
                         <Fragment>
                             <NavBar />
-                            <RightMenu username="JD" />
+                            <RightMenu username={this.props.username ? this.props.username : ""} />
                         </Fragment>
                         : null
                 }
@@ -47,6 +48,8 @@ class BaseLayout extends Component {
 const mapStateToProps = (state) => {
     return {
         isUserActive: state.auth.isUserActive,
+        loading: state.auth.loading,
+        username: state.auth.username
     }
 }
 
