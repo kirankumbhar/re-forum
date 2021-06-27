@@ -1,9 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { Icon, Avatar, Button } from 'antd'
+import { connect } from 'react-redux';
 
 import classes from './RightMenu.module.css';
 import { getUsernameInitials } from '../../../../utils';
+import * as actions from "../../../../store/actions/auth";
 
 const rightMenu = (props) => (
     <div className={classes.RightMenu}>
@@ -12,7 +14,15 @@ const rightMenu = (props) => (
         <Avatar className={classes.Avatar}>
             {getUsernameInitials(props.username)}
         </Avatar>
+        <Icon onClick={() => props.onLogout()} className={classes.BellIcon} type="logout" />
     </div>
 );
 
-export default withRouter(rightMenu);
+const mapDisptachToProps = (dispatch) => {
+
+    return {
+        onLogout: () => dispatch(actions.logOut())
+    }
+}
+
+export default connect(null, mapDisptachToProps)(withRouter(rightMenu));

@@ -4,7 +4,6 @@ import { Form, Icon, Input, Button, Alert } from 'antd';
 import styles from './Login.module.css';
 import * as actions from '../../../store/actions';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -33,7 +32,7 @@ class NormalLoginForm extends React.Component {
     return (
       <Fragment>
         {regsiterRedirectMessage}
-        <h2 className={styles.Header}>Log In</h2>
+        <h2 className={styles.Header}>Login</h2>
         <Form onSubmit={this.handleSubmit} className={styles.Login}>
           <Form.Item>
             {getFieldDecorator('username', {
@@ -62,6 +61,7 @@ class NormalLoginForm extends React.Component {
                 </Button>
                 Or <a href="/signup">register now!</a>
           </Form.Item>
+          {this.props.error ? <div style={{ color: "red" }}>{this.props.error}</div> : null}
         </Form>
       </Fragment>
     );
@@ -73,7 +73,8 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 const mapStateToProps = (state) => {
   return {
     isUserRegistered: state.auth.isUserRegistered,
-    isUserActive: state.auth.isUserActive
+    isUserActive: state.auth.isUserActive,
+    error: state.auth.errorDetails
   }
 }
 

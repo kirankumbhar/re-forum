@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import * as constants from '../../constants';
+import jwt_decode from "jwt-decode";
 
 const initialState = {
     loading: false,
@@ -56,6 +56,15 @@ const reducer = (state = initialState, action) => {
                 errorDetails: action.errorDetails,
                 errorDetailsType: action.errorDetailsType
             }
+        case actionTypes.LOGOUT:
+            return {
+                ...state,
+                isUserActive: false,
+                username: "",
+                firstName: "",
+                lastName: "",
+
+            }
         case actionTypes.MEAPI_START:
             return {
                 ...state,
@@ -74,13 +83,24 @@ const reducer = (state = initialState, action) => {
                 loading: false,
             }
         default:
-            if (localStorage['at']) {
-                return {
-                    ...state,
-                    isUserActive: true
+            let token = localStorage['at'];
+
+            if (token) {
+                let t_data = jwt_decode(token)
+                if (t_data.exp > new Date().getTime() / 1000) {
+                    return {
+                        ...state,
+                        isUserActive: true
+                    }
+                }
+                else {
+                    localStorage.removeItem('at')
                 }
             }
-            return state
+            return {
+                ...state,
+                isUserActive: false
+            }
     }
 }
 

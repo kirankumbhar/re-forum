@@ -80,12 +80,27 @@ export const logIn = (data) => {
                 errorDetailsType = 'string';
             }
             else {
-                errorDetails = error.response.data;
-                errorDetailsType = 'object';
-
+                if (!error.response) {
+                    errorDetails = "Unable to connect to the server."
+                    errorDetailsType = 'string';
+                }
+                else {
+                    errorDetails = error.response.data;
+                    errorDetailsType = 'object';
+                }
             }
             dispatch(logInFail(errorDetails, errorDetailsType));
         });
+    }
+}
+
+export const logOut = () => {
+    let at = localStorage['at']
+    if (at) {
+        localStorage.removeItem("at")
+        return {
+            type: actionTypes.LOGOUT
+        }
     }
 }
 
