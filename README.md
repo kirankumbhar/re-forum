@@ -1,4 +1,4 @@
-
+`
 ## Re-Forum
 
 Discussion Forum based on react.js
@@ -11,6 +11,7 @@ Discussion Forum based on react.js
 - React-quill 1.3
 
 ### Features
+- JWT authentication support :heavy_check_mark:
 - View all posts on the homepage (Almost done, trimming description remaining)
 - Create a new Post :heavy_check_mark:
 - Text editor support using react-quill :heavy_check_mark:
@@ -20,5 +21,4 @@ Discussion Forum based on react.js
 - Mark Post as favourite (To do)
 - Search Post (To do)
 - Filter posts based on time, catgeories and popularity (To do)
-- Auth (In Progress)
 
