@@ -56,11 +56,11 @@ class NormalLoginForm extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className={styles.MR1em}>
+            <Button type="primary" htmlType="submit" className={styles.LoginButton}>
               Log in
-                </Button>
-                Or <a href="/signup">register now!</a>
+            </Button>
           </Form.Item>
+          <div>No account? <a href="/signup">register now!</a></div>
           {this.props.error ? <div style={{ color: "red" }}>{this.props.error}</div> : null}
         </Form>
       </Fragment>

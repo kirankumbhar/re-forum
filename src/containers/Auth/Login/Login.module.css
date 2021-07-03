@@ -3,14 +3,19 @@
     margin: 0 auto;
 }
 
+.Login input {
+    border-color: #008080;
+}
+
 .Header {
     width: fit-content;
     padding: 1em;
     margin: 0 auto;
+    color: #008080;
 }
 
-.MR1em {
-    margin-right: 1em;
+.LoginButton {
+    width: 100%;
 }
 
 .Alert {
