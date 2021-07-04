@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Comment, Tooltip, Icon, Avatar } from 'antd';
+import { LikeOutlined } from '@ant-design/icons';
+import { Comment, Tooltip, Avatar } from 'antd';
 import { connect } from 'react-redux'
 
 import CommentForm from '../CommentForm/CommentForm';
@@ -24,42 +25,36 @@ class PostComment extends Component {
         if (this.props.reply) {
             // if replies exist loop through it without having 'reply to' button
             replyComments = this.props.reply.map((reply) => {
-                return <Comment
-                key={reply.id}
-                actions={[
-                    <span key={"comment-basic-like "+ reply.id}>
-                    <Tooltip title="Like">
-                        <Icon
-                        type="like"
-                        theme='outlined'
-                        onClick={this.props.comment.like}
-                        />
-                    </Tooltip>
-                    <span style={{ paddingLeft: 8, cursor: 'auto' }}>{reply[constants.COMMENT_LIKES]}</span>
-                    </span>
-                ]}
-                author={<a href="javascript:void(0);">{reply[constants.COMMENT_AUTHOR]}</a>}
-                avatar={
-                    <Avatar>{getUsernameInitials(reply[constants.COMMENT_AUTHOR])}</Avatar>
-                }
-                content={
-                    <div dangerouslySetInnerHTML={{__html: reply[constants.COMMENT_BODY]}}/>
-                }
-            ></Comment>
+                return (
+                    <Comment
+                    key={reply.id}
+                    actions={[
+                        <span key={"comment-basic-like "+ reply.id}>
+                        <Tooltip title="Like">
+                            <LikeOutlined onClick={this.props.comment.like} />
+                        </Tooltip>
+                        <span style={{ paddingLeft: 8, cursor: 'auto' }}>{reply[constants.COMMENT_LIKES]}</span>
+                        </span>
+                    ]}
+                    author={<a href="javascript:void(0);">{reply[constants.COMMENT_AUTHOR]}</a>}
+                    avatar={
+                        <Avatar>{getUsernameInitials(reply[constants.COMMENT_AUTHOR])}</Avatar>
+                    }
+                    content={
+                        <div dangerouslySetInnerHTML={{__html: reply[constants.COMMENT_BODY]}}/>
+                    }
+                ></Comment>
+                );
             });
         }
         
-        return(
+        return (
             <Comment
                 key={this.props.id}
                 actions={[
                     <span key={"comment-basic-like "+ this.props.id}>
                     <Tooltip title="Like">
-                        <Icon
-                        type="like"
-                        theme='outlined'
-                        onClick={this.props.comment.like}
-                        />
+                        <LikeOutlined onClick={this.props.comment.like} />
                     </Tooltip>
                     <span style={{ paddingLeft: 8, cursor: 'auto' }}>{this.props.comment[constants.COMMENT_LIKES]}</span>
                     </span>,

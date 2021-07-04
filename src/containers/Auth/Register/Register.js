@@ -1,12 +1,9 @@
 import React, { Fragment } from 'react';
 
-import {
-  Form,
-  Input,
-  Button,
-  Alert,
-  Row,
-} from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { Input, Button, Alert, Row } from 'antd';
 
 import styles from './Register.module.css';
 import * as actions from '../../../store/actions/';
