@@ -1,11 +1,11 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 
 import styles from './ActionItems.module.css';
 
 const IconText = ({type, value, theme, inlineStyle, iconStyle, onClick}) => (
     <span className={styles.ActionItem} style={inlineStyle}>
-        <Icon type={type} theme={theme} className={styles.Icon} style={iconStyle} onClick={onClick} />
+        <LegacyIcon type={type} theme={theme} className={styles.Icon} style={iconStyle} onClick={onClick} />
         {value}
     </span>
 );

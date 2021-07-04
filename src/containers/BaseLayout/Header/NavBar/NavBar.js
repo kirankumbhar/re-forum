@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Menu, Icon } from 'antd';
+import { ClockCircleOutlined, StarOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
 
 import classes from './NavBar.module.css';
 
@@ -18,11 +19,11 @@ class NavBar extends Component {
         return (
             <Menu className={classes.Menu} onClick = {this.onClickHandler} mode = "horizontal">
                 <Menu.Item key = "recent">
-                    <Icon type="clock-circle" />
+                    <ClockCircleOutlined />
                     Recent
                 </Menu.Item>
                 <Menu.Item key = "popular">
-                    <Icon type="star" />
+                    <StarOutlined />
                     Popular
                 </Menu.Item>
             </Menu>

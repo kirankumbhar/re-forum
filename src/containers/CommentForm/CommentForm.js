@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Comment, Avatar, Form, Button } from 'antd'
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Comment, Avatar, Button } from 'antd';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 

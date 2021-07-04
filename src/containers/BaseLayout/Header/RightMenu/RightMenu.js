@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import { Icon, Avatar, Button } from 'antd'
+import { BellOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Avatar, Button } from 'antd';
 import { connect } from 'react-redux';
 
 import classes from './RightMenu.module.css';
@@ -10,11 +11,11 @@ import * as actions from "../../../../store/actions/auth";
 const rightMenu = (props) => (
     <div className={classes.RightMenu}>
         <Button onClick={() => props.history.push('/post/create')} type="primary">Create a Topic</Button>
-        <Icon className={classes.BellIcon} type="bell" />
+        <BellOutlined className={classes.BellIcon} />
         <Avatar className={classes.Avatar}>
             {getUsernameInitials(props.username)}
         </Avatar>
-        <Icon onClick={() => props.onLogout()} className={classes.BellIcon} type="logout" />
+        <LogoutOutlined onClick={() => props.onLogout()} className={classes.BellIcon} />
     </div>
 );
 

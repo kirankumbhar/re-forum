@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { List, Icon } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import { List } from 'antd';
 import { connect } from 'react-redux';
 
 import Posts from '../../components/Posts/Posts';
@@ -37,7 +38,7 @@ class HomePage extends Component {
                     )}
                 />
                 <div className={styles.Posts}>
-                    {this.props.posts == null ? <Icon type="loading" className={styles.LoadingIcon}/> : <Posts postData={this.props.posts} />}
+                    {this.props.posts == null ? <LoadingOutlined className={styles.LoadingIcon} /> : <Posts postData={this.props.posts} />}
                 </div>
             </section>
         );

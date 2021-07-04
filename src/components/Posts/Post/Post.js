@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, Icon, Avatar } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { List, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 
 import styles from './Post.module.css';
@@ -8,7 +9,7 @@ import { getUsernameInitials } from '../../../utils';
 
 const IconText = ({ type, text }) => (
     <span>
-        <Icon type={type} style={{ marginRight: 8 }} />
+        <LegacyIcon type={type} style={{ marginRight: 8 }} />
         {text}
     </span>
 );
