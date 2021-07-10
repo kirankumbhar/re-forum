@@ -31,6 +31,7 @@ class PostDetails extends Component {
         let post = <FullPost
             liked={this.state.liked}
             postData={this.props.postData}
+            noOfComments={this.props.comments.length}
             postLikeHandler={this.postLikeHandler}
             loading={this.props.loading}
         />;
