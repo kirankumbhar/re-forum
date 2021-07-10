@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 const initialState = {
     loading: false,
     isUserRegistered: false,
-    isUserActive: false, //logged in
+    isUserActive: false,
+    userId: null,
     username: "",
     firstName: "",
     lastName: "",
@@ -90,7 +91,8 @@ const reducer = (state = initialState, action) => {
                 if (t_data.exp > new Date().getTime() / 1000) {
                     return {
                         ...state,
-                        isUserActive: true
+                        isUserActive: true,
+                        userId: t_data.user_id
                     }
                 }
                 else {

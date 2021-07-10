@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
+import * as keyConst from '../../constants';
 
 //get post on post details page
 export const getPost = (id) => {
@@ -37,12 +38,17 @@ export const getPostFail = (error) => {
 }
 
 //create comment on post details page
-export const createComment = (postId, parentCommentId, commentData) => {
+export const createComment = (commentData) => {
+    let data = {}
+    data[keyConst.POST_ID] = commentData.postId;
+    data[keyConst.COMMENT_BODY] = commentData.body;
+    data[keyConst.COMMENT_AUTHOR_ID] = commentData.author;
+    data[keyConst.COMMENT_LIKES] = 0;
     return dispatch => {
         dispatch(createCommentStart());
-        axios.post('/comments/', commentData)
+        axios.post('/comments/', data)
             .then(response => {
-                dispatch(createCommentSuccess(commentData));
+                dispatch(createCommentSuccess(response.data));
             })
             .catch(error => {
                 dispatch(createCommentFail(error));

@@ -28,7 +28,7 @@ class PostDetails extends Component {
     }
 
     render() {
-        let post = <FullPost 
+        let post = <FullPost
             liked={this.state.liked}
             postData={this.props.postData}
             postLikeHandler={this.postLikeHandler}
@@ -41,14 +41,14 @@ class PostDetails extends Component {
             <section className={styles.PostDetails}>
                 {post}
                 <Card className={styles.CommentsCard}>
-                    <section className={styles.AddComment}>
-                        <CommentForm />
-                    </section>
                     <Comments
                         comments={this.props.comments}
                         commentLoading={this.props.commentLoading}
                         loading={this.props.commentsLoading}
                     />
+                    <section className={styles.AddComment}>
+                        <CommentForm />
+                    </section>
                 </Card>
             </section>
         )
@@ -67,8 +67,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitPost : (id) => dispatch(actions.getPost(id)),
-        onInitComments : (id) => dispatch(actions.getComments(id))
+        onInitPost: (id) => dispatch(actions.getPost(id)),
+        onInitComments: (id) => dispatch(actions.getComments(id))
     }
 }
 

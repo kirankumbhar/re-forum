@@ -29,13 +29,14 @@ class CommentForm extends Component {
             parentCommentId = this.props.parentCommentId;
         }
         let commentData = {
-            author: "John Doe",
-            comment: this.state.commentText,
+            postId: this.props.postData.id,
+            author: this.props.userId,
+            body: this.state.commentText,
             likes: 0,
             last_modified_at: "just now",
             parentCommentId: parentCommentId
         }
-        this.props.onCreatecomment(this.props.postData.id, parentCommentId, commentData);
+        this.props.onCreatecomment(commentData);
         // this.setState({commentText: ''});
 
     }
@@ -97,13 +98,14 @@ const mapStateToProps = (state) => {
     return {
         postData: state.post.post,
         commentLoading: state.post.commentLoading,
-        parentId: state.post.parentCommentId
+        parentId: state.post.parentCommentId,
+        userId: state.auth.userId
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onCreatecomment: (postId, parentCommentId, commentData) => dispatch(actions.createComment(postId, parentCommentId, commentData))
+        onCreatecomment: (commentData) => dispatch(actions.createComment(commentData))
     }
 }
 
