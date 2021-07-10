@@ -1,3 +1,28 @@
 .Description img {
     width: 100%;
 }
+
+.Post {
+    border: none;
+    border-radius: 0.7rem;
+    box-shadow: 0px 0px 10px 2px lightgrey;
+}
+
+.AuthorName {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: darkslategray;
+    vertical-align: middle;
+}
+
+.Icon {
+    font-size: 24px;
+}
+
+.AvatarHead {
+    padding-bottom: 1.5rem;
+}
+
+.ActionItems {
+    padding-top: 1.5rem;
+}
