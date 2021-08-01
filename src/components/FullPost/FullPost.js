@@ -13,12 +13,6 @@ const fullPost = (props) => {
     if (props.postData) {
         post = (
             <Fragment>
-                {/* <Meta
-                    avatar={
-                        <Avatar size={22}>{getUsernameInitials(props.postData[constants.POST_AUTHOR])}</Avatar>
-                    }
-                    title={props.postData[constants.POST_AUTHOR]}
-                /> */}
                 <div className={styles.AvatarHead}>
                     <Avatar>{getUsernameInitials(props.postData[constants.POST_AUTHOR])}</Avatar>
                     <span className={styles.AuthorName}>{props.postData[constants.POST_AUTHOR]}</span>
