@@ -7,6 +7,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import Comments from '../../components/Comments/Comments';
 import CommentForm from '../CommentForm/CommentForm';
 import styles from './PostDetails.module.css';
+import Comment from '../../components/Comments/Comment/Comment'
 import * as actions from '../../store/actions/index';
 
 class PostDetails extends Component {
@@ -31,6 +32,7 @@ class PostDetails extends Component {
         let post = <FullPost
             liked={this.state.liked}
             postData={this.props.postData}
+            noOfComments={this.props.comments.length}
             postLikeHandler={this.postLikeHandler}
             loading={this.props.loading}
         />;
@@ -41,14 +43,14 @@ class PostDetails extends Component {
             <section className={styles.PostDetails}>
                 {post}
                 <Card className={styles.CommentsCard}>
+                    <section className={styles.AddComment}>
+                        <CommentForm />
+                    </section>
                     <Comments
                         comments={this.props.comments}
                         commentLoading={this.props.commentLoading}
                         loading={this.props.commentsLoading}
                     />
-                    <section className={styles.AddComment}>
-                        <CommentForm />
-                    </section>
                 </Card>
             </section>
         )

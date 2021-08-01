@@ -25,6 +25,7 @@ h1 {
 .Content {
     flex: 1;
     padding: 1em;
+    background-color: #f6f8fa;
 }
 
 .Footer {

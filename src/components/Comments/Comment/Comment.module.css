@@ -1,0 +1,51 @@
+.CommentCard {
+    background-color: #f0f5f9;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+
+}
+
+.CommentAuthor {
+    margin-left: 0.7rem;
+    vertical-align: middle;
+    font-size: 0.95rem;
+    color: #565656;
+}
+
+.CommentBody {
+    padding: 0.7rem;
+    color: #565656;
+}
+
+.Like {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.LikeNumber {
+    margin-left: 0.5rem;
+}
+
+.Dot {
+    width: 5px;
+    border-radius: 50%;
+    height: 5px;
+    background-color: rgb(24, 144, 255);
+    margin: 0 0.5rem;
+}
+
+.ReplyTo {
+    cursor: pointer;
+}
+
+.ActionItems {
+    display: flex;
+    align-items: center;
+    color: rgb(24, 144, 255);
+    padding-top: 0.3rem;
+    padding-bottom: 1.3rem;
+}
+
+.Replies {
+    margin-left: 3rem;
+}

@@ -1,3 +1,50 @@
 .Description img {
     width: 100%;
 }
+
+.Post {
+    border: none;
+    border-radius: 0.7rem;
+    box-shadow: 0px 0px 10px 2px lightgrey;
+}
+
+.AuthorName {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: darkslategray;
+}
+
+.Icon {
+    font-size: 24px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.IconSideText {
+    vertical-align: middle;
+    font-size: 1rem;
+    margin-left: 0.3rem;
+    margin-right: 1rem;
+}
+
+.IconMarginLeft {
+    margin-left: 0.5rem;
+}
+
+.AvatarHead {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.5rem;
+}
+
+.RightItems {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.ActionItems {
+    display: flex;
+    padding-top: 1.5rem;
+    align-items: center;
+}
